@@ -1,0 +1,33 @@
+#data-coderunner.io:
+# build: ./data-coderunner.io
+# container_name: "data-coderunner.io"
+#mariadb:
+# image: mariadb
+# container_name: "mariadb"
+# env_file: ./data-coderunner.io/env_coderunner.io
+# environment:
+#  - TERM=xterm
+# ports:
+#  - "127.0.0.1:3306:3306"
+# volumes_from:
+#  - data-coderunner.io
+#blog-coderunner.io:
+# image: ghost
+# container_name: "blog-coderunner.io"
+# volumes:
+#  - ./data-coderunner.io/config.js:/var/lib/ghost/config.js
+# volumes_from:
+#  - data-coderunner.io
+# environment:
+#  - VIRTUAL_HOST=coderunner.io
+# env_file: ./data-coderunner.io/env_coderunner.io
+# links:
+#  - mariadb:mysql
+nginx:
+ build: ./config
+# image: nginx
+ container_name: "lambdaliu-nginx"
+ ports:
+  - "80:80"
+ volumes:
+  - ./content/www/:/var/www
