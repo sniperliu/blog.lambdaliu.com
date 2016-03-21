@@ -1,6 +1,6 @@
-{:site-title         "\u03bbx.Liu"
+{:site-title         "(\u03bbx.Liu)Blog=Hacking"
  :author             "Liu Hao"
- :description        "This blog records my life on the lambda road"
+ :description        "LambdaLiu's technical blog about hacking FP with Clojure, Haskell etc. and also the DevOp with Docker"
  :site-url           "http://blog.lambdaliu.com/"
  :post-root          "posts"
  :page-root          "pages"
@@ -18,8 +18,8 @@
  :theme              "blue"
  :resources          ["img"]
  :keep-files         [".git"]
- :disqus?            false
- :disqus-shortname   ""
+ :disqus?            true
+ :disqus-shortname   "lambdaliu"
  :ignored-files      [#"\.#.*" #".*\.swp$"]
  :posts-per-page     5
  :blocks-per-preview 2

@@ -1,6 +1,6 @@
-{:title "When Ansible & Docker in Digital Ocean"
+{:title "When Ansible & Docker in Digital Ocean - Round 1"
  :layout :post
- :tags ["ansible" "docker" "digital ocean" "cloud computing"]}
+ :tags ["docker" "digital ocean" "cloud"]}
 
 ## Problem
 
@@ -78,34 +78,4 @@ root@HOSTNAME:~#ufw status
 ```
 8. follow the nice document of Docker, install [Docker Engine](https://docs.docker.com/engine/installation/linux/ubuntulinux/) & [Docker Compose](https://docs.docker.com/compose/install/)
 
-
-## Round 2 - Automate the site build and configure magically
-
-Coming Soon ...
-
-## Put the container on the docker in ocean
-
-
-```
-.
-+-- docker-compose.yml
-+-- config
-|   +-- Dockerfile
-|   +-- nginx.conf
-+-- content
-|   +-- www
-|   	+-- index.html
-|	+-- blog
-|	    ⋮
-+-- data
-```
-
-## Reference
-[Repo]()
-
-[A Server With Docker](http://blog.th4t.net/category/a-server-with-docker.html)
-
-[An advanced setup of Ghost and Docker made simple](http://coderunner.io/hello-blog-an-advanced-setup-of-ghost-and-docker-made-simple/)
-
-[Using Ansible with Docker Machine to Bootstrap Host Nodes](http://nathanleclaire.com/blog/2015/11/10/using-ansible-with-docker-machine-to-bootstrap-host-nodes/) form Nathan Leclarire
 
