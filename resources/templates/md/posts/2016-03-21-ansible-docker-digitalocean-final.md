@@ -56,7 +56,11 @@ I manage my blogs with git, and it need several commands to commit/push the chan
 
 I did some search and find git hooks. It is so cool to do a automited publish when you commit your changes.
 
-
+Add below command to .\.git\hooks\post-commit, make it runnable.
+```shell
+lein runnable
+rsync -avz ./resources/public/ USER@HOSTNAME:/opt/site/content/www/blog
+```
 
 ## Reference
 
