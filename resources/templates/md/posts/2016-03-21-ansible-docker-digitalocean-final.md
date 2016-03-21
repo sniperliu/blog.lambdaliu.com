@@ -50,8 +50,7 @@ $ rsync -avz ./resources/public/ username@HOSTNAME:/opt/site/content/www/blog
 rsync provide us a very easy way to publish the contents, but not good enough.
 I manage my blogs with git, and it need several commands to commit/push the changes and then rsync.
 
-I did some search and find git hooks. It is so cool to push your change to remote repository (like github etc.) and do a automated publish at the some time.
-
+I did some search and find git hooks. It is so cool to do a automited publish when you commit your changes.
 
 
 ## Reference
