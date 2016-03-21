@@ -25,7 +25,7 @@ I read [this post](http://blog.th4t.net/category/a-server-with-docker.html) and 
 ```shell
 # Be carefull and choose a name properly (like ~/.ssh/id_rsa_do)
 # and avoid overwrite exising key file
-$ ssh-gen
+$ ssh-keygen
 ```
 3. create the droplet, remember to choose ssh option
 4. edit the config file in client side, your laptop/desktop

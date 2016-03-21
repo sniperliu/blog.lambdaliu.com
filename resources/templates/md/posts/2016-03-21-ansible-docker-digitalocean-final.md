@@ -3,6 +3,7 @@
  :tags ["docker" "git" "hook" "digital ocean" "cloud computing"]}
 
 Finally we got our infrastructure ready!
+Make sure you have setup the deploy user's ssh in ~/.ssh/config.
 
 ## Put the docker container in ocean
 
@@ -29,11 +30,14 @@ Note:
 
 ### For manual setup
 
-Download all the configuration files to the host, like /opt/site
+Download all the configuration files to the host, put in folder like /opt/site
 
 ```shell
-root@HOSTNAME:~#cd /opt/site/
-root@HOSTNAME:~#docker-compose up -d
+$ scp resources/public/* USERNAME@HOSTNAME:/opt/site
+$ ssh ansible-sandbox
+# run in host/droplet
+$ cd /opt/site/
+$ docker-compose up -d
 ```
 
 I choose to compile the static page in local and rsync to publish the blogs to the host.
@@ -51,6 +55,7 @@ rsync provide us a very easy way to publish the contents, but not good enough.
 I manage my blogs with git, and it need several commands to commit/push the changes and then rsync.
 
 I did some search and find git hooks. It is so cool to do a automited publish when you commit your changes.
+
 
 
 ## Reference

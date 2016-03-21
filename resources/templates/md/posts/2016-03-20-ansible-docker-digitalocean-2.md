@@ -19,7 +19,7 @@ For my later clojure web application
 
 ## Round 2 - Automate the site build and configure magically
 
-After read the [this article](http://nathanleclaire.com/blog/2015/11/10/using-ansible-with-docker-machine-to-bootstrap-host-nodes/), I found docker-machine + ansible will be the saver, which could archive my goal. It use some tricks I think to run the ansible from docker container against host, which is use the host network stack.
+After read the [this article](http://nathanleclaire.com/blog/2015/11/10/using-ansible-with-docker-machine-to-bootstrap-host-nodes/), I found docker-machine + ansible will be the saver, which could archieve my goal. It use some tricks I think to run the ansible from docker container against host, which is use the host network stack.
 
 Anyway just do it!!
 
@@ -27,10 +27,25 @@ Anyway just do it!!
 
 2. Make sure you installed docker-machine on your desktop/laptop.
 
-3. Download the Dockerfile, which contain the ansible & playbooks from [repository](https://github.com/sniperliu/blog.lambdaliu.com/infra)
+3. Download the Dockerfile, which contain the ansible & playbooks from [repository](https://github.com/sniperliu/blog.lambdaliu.com/infra/ansible). Below is the folder structure of the ansible docker provision files
+```
+.
++-- create-droplet.sh
++-- Dockerfile
++-- entrypoint.sh
++-- playbooks
+|   +-- provision.yml
++-- ssh
+|   +-- id_rsa_deploy.pub # public key of the user created
++-- conf
+|   ⋮
+```
+
+4. Run below command or create-droplet.sh to create the droplet, adjust the parameters for different image, size or region
 ```shell
-$ cd PATH # infra folder
+$ cd PATH # infra/ansible folder
 # RUN startvm.sh which contains below command to start a docker machine in ocean
+# The vm host's name ansible-sandbox is used, you may change to what you like
 $ docker-machine create --driver digitalocean \
        	         --digitalocean-access-token=$DIGITALOCEAN_ACCESS_TOKEN \
 	         --digitalocean-image=ubuntu-15-10-x64 \
@@ -39,4 +54,35 @@ $ docker-machine create --driver digitalocean \
 	         ansible-sandbox
 ```
 
+5. After above command returned, the new vm will be ready. Then
+```shell
+# Check the vm status
+$ docker-machine ls
+# Setup the envrionment in the terminal
+$ eval $(docker-machine env ansible-sandbox)
+# Build the ansible provision docker image
+$ docker build -t ansible-provision .
+# Run ansible provision container to do the setup
+$ docker run --rm \		      # remove the container after it's done
+  	     --net host \	      # the trick to use the host network stack which ansible localhost work against
+	     -v /root/.ssh:/hostssh \ # volumne to exchange the ssh public keys, and make container could access host
+	     ansible-provision	      # our image tag
+```
 
+6. Add the new user (deploy) to ~/.ssh/config file
+```shell
+$ ssh ansible-sandbox
+```
+
+## Pros
+
+* No need to run so many shell commands, switch between browser and terminal
+* Docker machine help manages the vm and install docker engine directly
+* Ansible playbook is very clear and readable. Compared with Round 1, I did more security setting, like create another user instead of use root, create docker group, and assign the user to proper group etc.
+* Everything is documented, and all the documents could be delivered & run directly or with ansible
+* Everything is automated, easy to create similar vm/docker instanses and even change the VPS if there is docker machine driver supported.
+
+## Cons
+
+* Docker machine does not install Docker Compose, make me feel something mssing. Instead I use ansible install it.
+* Run the container to control host make me not comfortable. (So I decide another post to try vagrant/docker/ansible for the setup. :))
