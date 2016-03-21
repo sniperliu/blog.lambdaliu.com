@@ -1,6 +1,6 @@
 {:title "When Ansible & Docker in Digital Ocean - Final"
  :layout :post
- :tags ["docker" "git" "hook" "digital ocean" "cloud computing"]}
+ :tags ["docker" "git" "hook" "digitalocean" "cloud"]}
 
 Finally we got our infrastructure ready!
 Make sure you have setup the deploy user's ssh in ~/.ssh/config.

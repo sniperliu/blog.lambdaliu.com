@@ -1,6 +1,6 @@
 {:title "When Ansible & Docker in Digital Ocean - Round 2"
  :layout :post
- :tags ["ansible" "docker" "digital ocean" "cloud computing"]}
+ :tags ["ansible" "docker" "digitalocean" "cloud"]}
 
 ## Problem
 
