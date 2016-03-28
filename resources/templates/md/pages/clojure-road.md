@@ -148,6 +148,9 @@ Mine
   - Refactoring
     - [clj-refactor](https://github.com/clojure-emacs/clj-refactor.el)
   - Inter-operate
+  - Data Serialize
+    - [msgpack](https://github.com/edma2/clojure-msgpack)
+    - [clojure-protobuf](https://github.com/ninjudd/clojure-protobuf)
   - Utility
     - [ancient](https://github.com/xsc/lein-ancient)
     - [weasel](https://github.com/tomjakubowski/weasel)
