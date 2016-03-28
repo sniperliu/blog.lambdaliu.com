@@ -6,7 +6,7 @@ Want to implement Bittorrent client in Clojure.
 
 As first step,  I implemented the Bencoding which torrent file is encoded.
 
-I did some research, read some implementation in Haskell and found one Bencoding implementation in Clojure, but it's in raw style and could not handle some invalid condition, like "i-0e" etc.
+I did some research, read some implementation in Haskell and found one Bencoding implementation in Clojure, but it's in raw style and could not handle some invalid conditions, like "i-0e" etc.
 
 So I wonder why could not I implement one like what Haskeller did with Parsec.
 
@@ -41,6 +41,6 @@ And implement something like below
 Gist: [bencoding.clj](https://gist.github.com/sniperliu/91993c79e03f52831c6b)
 
 Note:
-- the/parsatron seems not actively being maintained now.
--  It only use String or sequence of token as input may be a minus.
+- the/parsatron seems not be actively maintained now.
+-  It only use String or sequence of token as input might be a minus.
 -  But I am quite glad to implement the bencoding logic with it. And thanks [youngnh](https://github.com/youngnh) for the brilliant implementation.
